@@ -3,5 +3,11 @@
         "name": "test",
         "description": "This is the first module.",
         "url": "https://raw.githubusercontent.com/Darklord2996/Dark-OS/refs/heads/main/Moduals/test.lua"
+    },
+    {
+        "name": "test2",
+        "description": "This is the second module.",
+        "url": "https://github.com/Darklord2996/Dark-OS/raw/refs/heads/main/Moduals/test2.lua"
     }
+    
 ]
