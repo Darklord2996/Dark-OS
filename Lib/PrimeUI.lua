@@ -1,7 +1,16 @@
 -- PrimeUI by JackMacWindows
 -- Public domain/CC0
 
-local expect = require "cc.expect".expect
+-- Include the necessary parts of the cc.expect library
+local function expect(index, value, ...)
+    local types = {...}
+    for _, t in ipairs(types) do
+        if type(value) == t then
+            return value
+        end
+    end
+    error(("bad argument #%d (expected %s, got %s)"):format(index, table.concat(types, " or "), type(value)), 3)
+end
 
 -- Initialization code
 local PrimeUI = {}
@@ -139,7 +148,6 @@ end
 ---@param clickedColor color|nil The color of the button when clicked (defaults to gray)
 ---@param periphName string|nil The name of the monitor peripheral, or nil (set if you're using a monitor - events will be filtered to that monitor)
 function PrimeUI.button(win, x, y, text, action, fgColor, bgColor, clickedColor, periphName)
-    expect(1, win, "table")
     expect(1, win, "table")
     expect(2, x, "number")
     expect(3, y, "number")
@@ -683,7 +691,6 @@ end
 ---@param clickedColor color|nil The color of the button when clicked (defaults to gray)
 ---@param periphName string|nil The name of the monitor peripheral, or nil (set if you're using a monitor - events will be filtered to that monitor)
 function PrimeUI.toggleButton(win, x, y, textOn, textOff, action, fgColor, bgColor, clickedColor, periphName)
-    expect(1, win, "table")
     expect(1, win, "table")
     expect(2, x, "number")
     expect(3, y, "number")
